@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymTracker - Sistema de Registro de Ejercicios</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <h1>🏋️ GymTracker</h1>
+            </div>
+            <div class="nav-links">
+                <div class="nav-link" data-view="dashboard">📊 Dashboard</div>
+                <div class="nav-link" data-view="exercises">💪 Ejercicios</div>
+                <div class="nav-link" data-view="routines">📋 Rutinas</div>
+                <div class="nav-link" data-view="sessions">📅 Sesiones</div>
+            </div>
+        </nav>
+        
+        <main id="main-content">
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <p>Cargando...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts modulares -->
+    <script src="/js/db.js"></script>
+    <script src="/js/data.js"></script>
+    <script src="/js/views/DashboardView.js"></script>
+    <script src="/js/views/ExercisesView.js"></script>
+    <script src="/js/views/RoutinesView.js"></script>
+    <script src="/js/views/SessionsView.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
