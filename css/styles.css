@@ -396,3 +396,66 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+.routines-grid, .sessions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.routine-card, .session-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.routine-card:hover, .session-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.btn-view {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.routine-actions, .session-actions {
+    padding: 1rem;
+    background: #f9f9f9;
+    display: flex;
+    gap: 0.5rem;
+    border-top: 1px solid #eee;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.remove-set {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.routine-option {
+    transition: background 0.3s ease;
+}
+
+.routine-option:hover {
+    background: #f0f0f0;
+}

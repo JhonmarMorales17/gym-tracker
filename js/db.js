@@ -23,14 +23,17 @@ class DatabaseManager {
                 if (!db.objectStoreNames.contains('exercises')) {
                     const exerciseStore = db.createObjectStore('exercises', { keyPath: 'id', autoIncrement: true });
                     exerciseStore.createIndex('muscleGroup', 'muscleGroup', { unique: false });
+                    console.log('Exercises store created');
                 }
                 
                 if (!db.objectStoreNames.contains('routines')) {
                     db.createObjectStore('routines', { keyPath: 'id', autoIncrement: true });
+                    console.log('Routines store created');
                 }
                 
                 if (!db.objectStoreNames.contains('sessions')) {
                     db.createObjectStore('sessions', { keyPath: 'id', autoIncrement: true });
+                    console.log('Sessions store created');
                 }
             };
         });
@@ -56,6 +59,17 @@ class DatabaseManager {
         });
     }
 
+    // MÉTODO AGREGADO - getById
+    async getById(store, id) {
+        const transaction = this.db.transaction([store], 'readonly');
+        const objectStore = transaction.objectStore(store);
+        return new Promise((resolve, reject) => {
+            const request = objectStore.get(id);
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+        });
+    }
+
     async update(store, id, data) {
         const transaction = this.db.transaction([store], 'readwrite');
         const objectStore = transaction.objectStore(store);
@@ -71,6 +85,16 @@ class DatabaseManager {
         const objectStore = transaction.objectStore(store);
         return new Promise((resolve, reject) => {
             const request = objectStore.delete(id);
+            request.onsuccess = () => resolve();
+            request.onerror = () => reject(request.error);
+        });
+    }
+
+    async clear(store) {
+        const transaction = this.db.transaction([store], 'readwrite');
+        const objectStore = transaction.objectStore(store);
+        return new Promise((resolve, reject) => {
+            const request = objectStore.clear();
             request.onsuccess = () => resolve();
             request.onerror = () => reject(request.error);
         });
